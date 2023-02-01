@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ua">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Світчі</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header></header>
+    <main>
+
+            <div class="container-fluid align-items-center">
+                <table class="table text-center bg-info">
+                    <thead>
+                        <th scope="col">Дод. інформація по світчу</th>
+                    </thead>
+                </table>
+                <table id="switch-info" class="table  table-bordered">
+                    <tbody class="table-striped">
+                    <tr>
+                        <th scope="row">Опис:</th>
+                        <th id="desc" scope="row">DES-3200-26/C1 Fast Ethernet Switch</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Знаходження:</th>
+                        <th id="place" scope="row">Lesnoy_20_1par_2</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Прошивка:</th>
+                        <th id="firmware" scope="row">4.37.B013</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Ревізія:</th>
+                        <th id="revision" scope="row">C1</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">IP:</th>
+                        <th id="IP" scope="row">10.11.71.93</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">MAC:</th>
+                        <th id="MAC" scope="row">90:94:e4:20:35:80</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">hiVlan:</th>
+                        <th id="hiVlan" scope="row">3768</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">loVlan:</th>
+                        <th id="loVlan" scope="row">3100</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Адрес:</th>
+                        <th id="adress"scope="row">пр. Лісний 20 під. 1 <br> <span class="switch-number"> світч №1</span></th>
+                    </tr>
+                    </tbody>
+                </table>
+                <!-- Button trigger modal -->
+                <button class="col-12 btn btn-dark warn-btn"  data-target="#exampleModal"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" > Редактувати світч</button>
+                <hr>
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Редактувати інформацію про світч</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <from id="change-info" method="POST" class="row ">
+                                    <p class="col-4 my-1 "> Опис</p> <input class="col-6 my-1" type="text"  name="desc">
+                                    <p class="col-4 my-1"> Знаходження  </p> <input class="col-6 my-1" type="text" name="placement">
+                                    <p class="col-4 my-1"> Прошивка  </p> <input class="col-6 my-1" type="text" name="firmware">
+                                    <p class="col-4 my-1"> Ревізія </p>  <input class="col-6 my-1" type="text" name="Revision">
+                                    <p class="col-4 my-1"> IP  </p> <input class="col-6 my-1" type="text" name="IP">
+                                    <p class="col-4 my-1"> MAC  </p> <input class="col-6 my-1" type="text" name="MAC">
+                                    <p class="col-4 my-1"> hiVlan  </p> <input class="col-6 my-1" type="text" name="hiVlan">
+                                    <p class="col-4 my-1"> IoVlan  </p> <input class="col-6 my-1" type="text" name="loVlan">
+                                    <p class="col-4 my-1"> Aдрес  </p> <input class="col-6 my-1" type="text" name="adress">
+                                    <input type="submit">
+                                </from>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary btn-add-name-company">Сохранить</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            <div>
+                <ul class="list-group align-items-center" style="list-style:none">
+                    <li class=" my-1 col-11"><button class="container-fluid btn btn-dark warn-btn"> Перезавантажити</button></li>
+                    <li class=" my-1 col-11"><button class="container-fluid btn btn-dark info-btn"> Попінгуй </button></li>
+                    <li class=" my-1 col-11"><button class="container-fluid btn btn-dark info-btn"> MAC-Адрес з портів</button></li>
+                    <li class=" my-1 col-11"><button class="container-fluid btn btn-dark info-btn"> Знаходження світча</button></li>
+                    <li class=" my-1 col-11"><button class="container-fluid btn btn-dark info-btn"> Консоль телнет</button></li>
+                    <li class=" my-1 col-11"><button class="container-fluid btn  btn-dark err-btn"> Відключити всіх користувачів</button></li>
+                </ul>
+            </div>
+            </div>
+        <div class="container-fluid">
+            <div id="free-port">
+                <table class="table  text-center">
+                    <thead>
+                    <th class="bg-info">D-Link DES-3200-26</th>
+                    </thead>
+                    <thead>
+                    <th class="bg-info">Вільні порти:</th>
+                    </thead>
+                </table>
+            </div>
+            <div class="row flex-wrap ">
+                <div class="card col-lg-4 col-xl-2  mx-xs-auto col-sm-6 col-12">
+                    <div class="userConnect">
+                        <div class="row">
+                            <div class="col-2 col-sm-3 col-md-2 bg-success d-flex align-items-center justify-content-center   "><h6 class="">1</h6></div>
+                            <div class="col-10 col-sm-9 col-md-10 ">
+                                <h6 class=" text-black">Шишко Василій Миколайович (8296) </h6>
+                                <p class="text-secondary ">пр. Лісний 20, кв 96</p>
+                                <p class="text-success ">100 <span>Mbps</span></p>
+                                <button class="container-fluid btn btn-secondary text-start  ">Вкл.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>     <div class="card col-lg-4 col-xl-2  mx-xs-auto col-sm-6 col-12">
+                    <div class="userConnect">
+                        <div class="row">
+                            <div class="col-2 col-sm-3 col-md-2 bg-success d-flex align-items-center justify-content-center   "><h6 class="">1</h6></div>
+                            <div class="col-10 col-sm-9 col-md-10 ">
+                                <h6 class=" text-black">Шишко Василій Миколайович (8296) </h6>
+                                <p class="text-secondary ">пр. Лісний 20, кв 96</p>
+                                <p class="text-success ">100 <span>Mbps</span></p>
+                                <button class="container-fluid btn btn-secondary text-start  ">Вкл.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>     <div class="card col-lg-4 col-xl-2  mx-xs-auto col-sm-6 col-12">
+                    <div class="userConnect">
+                        <div class="row">
+                            <div class="col-2 col-sm-3 col-md-2 bg-success d-flex align-items-center justify-content-center   "><h6 class="">1</h6></div>
+                            <div class="col-10 col-sm-9 col-md-10 ">
+                                <h6 class=" text-black">Шишко Василій Миколайович (8296) </h6>
+                                <p class="text-secondary ">пр. Лісний 20, кв 96</p>
+                                <p class="text-success ">100 <span>Mbps</span></p>
+                                <button class="container-fluid btn btn-secondary text-start  ">Вкл.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>     <div class="card col-lg-4 col-xl-2  mx-xs-auto col-sm-6 col-12">
+                    <div class="userConnect">
+                        <div class="row">
+                            <div class="col-2 col-sm-3 col-md-2 bg-success d-flex align-items-center justify-content-center   "><h6 class="">1</h6></div>
+                            <div class="col-10 col-sm-9 col-md-10 ">
+                                <h6 class=" text-black">Шишко Василій Миколайович (8296) </h6>
+                                <p class="text-secondary ">пр. Лісний 20, кв 96</p>
+                                <p class="text-success ">100 <span>Mbps</span></p>
+                                <button class="container-fluid btn btn-secondary text-start  ">Вкл.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>     <div class="card col-lg-4 col-xl-2  mx-xs-auto col-sm-6 col-12">
+                    <div class="userConnect">
+                        <div class="row">
+                            <div class="col-2 col-sm-3 col-md-2 bg-success d-flex align-items-center justify-content-center   "><h6 class="">1</h6></div>
+                            <div class="col-10 col-sm-9 col-md-10 ">
+                                <h6 class=" text-black">Шишко Василій Миколайович (8296) </h6>
+                                <p class="text-secondary ">пр. Лісний 20, кв 96</p>
+                                <p class="text-success ">100 <span>Mbps</span></p>
+                                <button class="container-fluid btn btn-secondary text-start  ">Вкл.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>     <div class="card col-lg-4 col-xl-2  mx-xs-auto col-sm-6 col-12">
+                    <div class="userConnect">
+                        <div class="row">
+                            <div class="col-2 col-sm-3 col-md-2 bg-success d-flex align-items-center justify-content-center   "><h6 class="">1</h6></div>
+                            <div class="col-10 col-sm-9 col-md-10 ">
+                                <h6 class=" text-black">Шишко Василій Миколайович (8296) </h6>
+                                <p class="text-secondary ">пр. Лісний 20, кв 96</p>
+                                <p class="text-success ">100 <span>Mbps</span></p>
+                                <button class="container-fluid btn btn-secondary text-start  ">Вкл.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>     <div class="card col-lg-4 col-xl-2  mx-xs-auto col-sm-6 col-12">
+                    <div class="userConnect">
+                        <div class="row">
+                            <div class="col-2 col-sm-3 col-md-2 bg-success d-flex align-items-center justify-content-center   "><h6 class="">1</h6></div>
+                            <div class="col-10 col-sm-9 col-md-10 ">
+                                <h6 class=" text-black">Шишко Василій Миколайович (8296) </h6>
+                                <p class="text-secondary ">пр. Лісний 20, кв 96</p>
+                                <p class="text-success ">100 <span>Mbps</span></p>
+                                <button class="container-fluid btn btn-secondary text-start  ">Вкл.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>     <div class="card col-lg-4 col-xl-2  mx-xs-auto col-sm-6 col-12">
+                    <div class="userConnect">
+                        <div class="row">
+                            <div class="col-2 col-sm-3 col-md-2 bg-success d-flex align-items-center justify-content-center   "><h6 class="">1</h6></div>
+                            <div class="col-10 col-sm-9 col-md-10 ">
+                                <h6 class=" text-black">Шишко Василій Миколайович (8296) </h6>
+                                <p class="text-secondary ">пр. Лісний 20, кв 96</p>
+                                <p class="text-success ">100 <span>Mbps</span></p>
+                                <button class="container-fluid btn btn-secondary text-start  ">Вкл.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>     <div class="card col-lg-4 col-xl-2  mx-xs-auto col-sm-6 col-12">
+                    <div class="userConnect">
+                        <div class="row">
+                            <div class="col-2 col-sm-3 col-md-2 bg-success d-flex align-items-center justify-content-center   "><h6 class="">1</h6></div>
+                            <div class="col-10 col-sm-9 col-md-10 ">
+                                <h6 class=" text-black">Шишко Василій Миколайович (8296) </h6>
+                                <p class="text-secondary ">пр. Лісний 20, кв 96</p>
+                                <p class="text-success ">100 <span>Mbps</span></p>
+                                <button class="container-fluid btn btn-secondary text-start  ">Вкл.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>     <div class="card col-lg-4 col-xl-2  mx-xs-auto col-sm-6 col-12">
+                    <div class="userConnect">
+                        <div class="row">
+                            <div class="col-2 col-sm-3 col-md-2 bg-success d-flex align-items-center justify-content-center   "><h6 class="">1</h6></div>
+                            <div class="col-10 col-sm-9 col-md-10 ">
+                                <h6 class=" text-black">Шишко Василій Миколайович (8296) </h6>
+                                <p class="text-secondary ">пр. Лісний 20, кв 96</p>
+                                <p class="text-success ">100 <span>Mbps</span></p>
+                                <button class="container-fluid btn btn-secondary text-start  ">Вкл.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>     <div class="card col-lg-4 col-xl-2  mx-xs-auto col-sm-6 col-12">
+                    <div class="userConnect">
+                        <div class="row">
+                            <div class="col-2 col-sm-3 col-md-2 bg-success d-flex align-items-center justify-content-center   "><h6 class="">1</h6></div>
+                            <div class="col-10 col-sm-9 col-md-10 ">
+                                <h6 class=" text-black">Шишко Василій Миколайович (8296) </h6>
+                                <p class="text-secondary ">пр. Лісний 20, кв 96</p>
+                                <p class="text-success ">100 <span>Mbps</span></p>
+                                <button class="container-fluid btn btn-secondary text-start  ">Вкл.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>     <div class="card col-lg-4 col-xl-2  mx-xs-auto col-sm-6 col-12">
+                    <div class="userConnect">
+                        <div class="row">
+                            <div class="col-2 col-sm-3 col-md-2 bg-success d-flex align-items-center justify-content-center   "><h6 class="">1</h6></div>
+                            <div class="col-10 col-sm-9 col-md-10 ">
+                                <h6 class=" text-black">Шишко Василій Миколайович (8296) </h6>
+                                <p class="text-secondary ">пр. Лісний 20, кв 96</p>
+                                <p class="text-success ">100 <span>Mbps</span></p>
+                                <button class="container-fluid btn btn-secondary text-start  ">Вкл.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>     <div class="card col-lg-4 col-xl-2  mx-xs-auto col-sm-6 col-12">
+                    <div class="userConnect">
+                        <div class="row">
+                            <div class="col-2 col-sm-3 col-md-2 bg-success d-flex align-items-center justify-content-center   "><h6 class="">1</h6></div>
+                            <div class="col-10 col-sm-9 col-md-10 ">
+                                <h6 class=" text-black">Шишко Василій Миколайович (8296) </h6>
+                                <p class="text-secondary ">пр. Лісний 20, кв 96</p>
+                                <p class="text-success ">100 <span>Mbps</span></p>
+                                <button class="container-fluid btn btn-secondary text-start  ">Вкл.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>     <div class="card col-lg-4 col-xl-2  mx-xs-auto col-sm-6 col-12">
+                    <div class="userConnect">
+                        <div class="row">
+                            <div class="col-2 col-sm-3 col-md-2 bg-success d-flex align-items-center justify-content-center   "><h6 class="">1</h6></div>
+                            <div class="col-10 col-sm-9 col-md-10 ">
+                                <h6 class=" text-black">Шишко Василій Миколайович (8296) </h6>
+                                <p class="text-secondary ">пр. Лісний 20, кв 96</p>
+                                <p class="text-success ">100 <span>Mbps</span></p>
+                                <button class="container-fluid btn btn-secondary text-start  ">Вкл.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>     <div class="card col-lg-4 col-xl-2  mx-xs-auto col-sm-6 col-12">
+                    <div class="userConnect">
+                        <div class="row">
+                            <div class="col-2 col-sm-3 col-md-2 bg-success d-flex align-items-center justify-content-center   "><h6 class="">1</h6></div>
+                            <div class="col-10 col-sm-9 col-md-10 ">
+                                <h6 class=" text-black">Шишко Василій Миколайович (8296) </h6>
+                                <p class="text-secondary ">пр. Лісний 20, кв 96</p>
+                                <p class="text-success ">100 <span>Mbps</span></p>
+                                <button class="container-fluid btn btn-secondary text-start  ">Вкл.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        </div>
+
+
+</main>
+    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js " integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN " crossorigin="anonymous "></script>
+</body>
+</html>
+
+
+
+

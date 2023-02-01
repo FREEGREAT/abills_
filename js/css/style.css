@@ -1,0 +1,48 @@
+
+.row-flex {
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+-ms-flex-wrap: wrap;
+flex-wrap: wrap;
+}
+
+.switch-number{
+color: #606060
+}
+
+.warn-btn:hover
+{
+    background: yellow;
+    color: black;
+}
+ .info-btn:hover
+ {
+    background: Aqua;
+ }
+
+ .err-btn:hover
+ {
+    background: red;
+    color: black;
+ }
+
+ /* User list styles */
+
+ .nick-color
+ {
+    color: #9eaddd;
+ }
+
+ .user-type{
+    background: #f0f0fa;
+    border-radius: 5px
+ }
+ .mail-font
+ {
+    color: #9989c6;
+ }
+
+ .user-icon{
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+ }
